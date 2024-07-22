@@ -1,4 +1,4 @@
-variable "create" {
+variable "crete" {
   description = "Controls if S3 bucket should be created"
   type        = bool
   default     = true
