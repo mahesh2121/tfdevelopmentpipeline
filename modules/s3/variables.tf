@@ -1,14 +1,28 @@
-output "id" {
-  value       = aws_s3_bucket.this[0].id
-  description = "The name of the bucket."
+variable "create" {
+  description = "Controls if S3 bucket should be created"
+  type        = bool
+  default     = true
 }
 
-output "arn" {
-  value       = aws_s3_bucket.this[0].arn
-  description = "The ARN of the bucket. Will be of format arn:aws:s3:::bucketname."
+variable "name" {
+  type        = string
+  description = "The name of the resource"
 }
 
-output "bucket_domain_name" {
-  value       = aws_s3_bucket.this[0].bucket_domain_name
-  description = "The bucket domain name. Will be of format bucketname.s3.amazonaws.com."
+variable "force_destroy" {
+  description = "(Optional, Default:false ) A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable."
+  type        = bool
+  default     = false
+}
+
+variable "object_lock_enabled" {
+  description = "(Optional, Default:false ) Whether S3 bucket should have an Object Lock configuration enabled."
+  type        = bool
+  default     = false
+}
+
+variable "tags" {
+  description = "(Optional) A mapping of tags to assign to the bucket."
+  type        = map(string)
+  default     = {}
 }
